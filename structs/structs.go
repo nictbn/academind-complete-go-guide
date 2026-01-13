@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
+	"errors"
 )
 
 type user struct {
@@ -21,13 +22,16 @@ func (u *user) clearUserName() {
 	u.lastName = ""
 }
 
-func newUser(firstName string, lastName string, birthdate string) *user {
+func newUser(firstName string, lastName string, birthdate string) (*user, error) {
+	if firstName == "" || lastName == "" || birthdate == "" {
+		return nil, errors.New("First Name, Last Name and Birth Date are required.")
+	}
 	return &user {
 		firstName: firstName,
 		lastName: lastName,
 		birthDate: birthdate,
 		createdAt: time.Now(),
-	}
+	}, nil
 }
 
 func main() {
@@ -36,7 +40,11 @@ func main() {
 	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 	
 	var appUser *user
-	appUser = newUser(firstName, lastName, birthdate)
+	appUser, err := newUser(firstName, lastName, birthdate)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	// if you maintain the order, you can also instantiate like this, regardless of the variable names:
 	// appUser = user{
