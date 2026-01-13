@@ -21,18 +21,22 @@ func (u *user) clearUserName() {
 	u.lastName = ""
 }
 
-func main() {
-	firstName := getUserData("Please enter your first name: ")
-	lastName := getUserData("Please enter your last name: ")
-	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
-	
-	var appUser user
-	appUser = user{
+func newUser(firstName string, lastName string, birthdate string) *user {
+	return &user {
 		firstName: firstName,
 		lastName: lastName,
 		birthDate: birthdate,
 		createdAt: time.Now(),
 	}
+}
+
+func main() {
+	firstName := getUserData("Please enter your first name: ")
+	lastName := getUserData("Please enter your last name: ")
+	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	
+	var appUser *user
+	appUser = newUser(firstName, lastName, birthdate)
 
 	// if you maintain the order, you can also instantiate like this, regardless of the variable names:
 	// appUser = user{
