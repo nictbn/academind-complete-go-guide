@@ -17,17 +17,33 @@ func main() {
 	lastName := getUserData("Please enter your last name: ")
 	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 	
-	var appUSer user
-	appUSer = user{
+	var appUser user
+	appUser = user{
 		firstName: firstName,
 		lastName: lastName,
-		birthDate: birthDate,
+		birthDate: birthdate,
 		createdAt: time.Now(),
 	}
 
+	// if you maintain the order, you can also instantiate like this, regardless of the variable names:
+	// appUser = user{
+	// 	firstName,
+	// 	lastName,
+	// 	birthDate,
+	// 	time.Now(),
+	// }
+
+	// you can also instantiate a null user
+	// appUser = {}
+
 	// ... do something awesome with that gathered data!
 
-	fmt.Println(firstName, lastName, birthdate)
+	// fmt.Println(firstName, lastName, birthdate)
+	outputUserDetails(appUser)
+}
+
+func outputUserDetails(u user) {
+	fmt.Println(u.firstName, u.lastName, u.birthDate)
 }
 
 func getUserData(promptText string) string {
