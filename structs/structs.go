@@ -17,6 +17,9 @@ func main() {
 		return
 	}
 
+	admin := user.NewAdmin("test@example.com", "test123")
+	admin.OutputUserDetails()
+
 	// if you maintain the order, you can also instantiate like this, regardless of the variable names:
 	// appUser = user{
 	// 	firstName,
