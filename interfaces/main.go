@@ -20,6 +20,10 @@ type outputtable interface {
 }
 
 func main() {
+	printSomething(1)
+	printSomething(1.5)
+	printSomething("Hello")
+
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text: ")
 	todo, err := todo.New(todoText)
@@ -46,6 +50,10 @@ func main() {
 	if err != nil {
 		return
 	}
+}
+
+func printSomething(value interface{}) {
+	fmt.Println(value)
 }
 
 func outputData(data outputtable) error {
