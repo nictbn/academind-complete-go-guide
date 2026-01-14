@@ -27,6 +27,7 @@ func main() {
 	title, content := getNoteData()
 	todoText := getUserInput("Todo text: ")
 	todo, err := todo.New(todoText)
+	printSomething(todo)
 
 	if err != nil {
 		fmt.Println(err)
@@ -53,7 +54,15 @@ func main() {
 }
 
 func printSomething(value interface{}) {
-	fmt.Println(value)
+	switch value.(type) {
+	case int:
+		fmt.Println("Integer:", value)
+	case float64:
+		fmt.Println("Float:", value)
+	case string:
+		fmt.Println(value)
+	}
+
 }
 
 func outputData(data outputtable) error {
