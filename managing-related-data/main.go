@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+type floatMap map[string]float64
+
 func main() {
 	userNames := make([]string, 2, 5)
 	userNames[0] = "Julie"
@@ -10,7 +12,7 @@ func main() {
 	userNames = append(userNames, "Manuel")
 	fmt.Println(userNames)
 
-	courseRatings := make(map[string]float64, 3)
+	courseRatings := make(floatMap, 3)
 
 	courseRatings["go"] = 4.7
 	courseRatings["react"] = 4.8
