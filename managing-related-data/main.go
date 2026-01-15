@@ -19,4 +19,14 @@ func main() {
 	courseRatings["angular"] = 4.7
 	courseRatings["node"] = 4.8
 	fmt.Println(courseRatings)
+
+	for index, value := range userNames {
+		fmt.Println(index)
+		fmt.Println(value)
+	}
+
+	for key, value := range courseRatings {
+		fmt.Println("Key: ", key)
+		fmt.Println("Value: ", value)
+	}
 }
