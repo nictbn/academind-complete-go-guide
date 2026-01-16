@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	numbers := []int{1, 2, 3}
@@ -10,6 +12,14 @@ func main() {
 	})
 
 	fmt.Println(transformed)
+
+	double := createTransformer(2)
+	triple := createTransformer(3)
+
+	doubled := transformNumbers(&numbers, double)
+	tripled := transformNumbers(&numbers, triple)
+	fmt.Println(doubled)
+	fmt.Println(tripled)
 }
 
 func transformNumbers(numbers *[]int, transform func(int) int) []int {
@@ -20,4 +30,10 @@ func transformNumbers(numbers *[]int, transform func(int) int) []int {
 	}
 
 	return dNumbers
+}
+
+func createTransformer(factor int) func(int) int {
+	return func(number int) int {
+		return number * factor
+	}
 }
